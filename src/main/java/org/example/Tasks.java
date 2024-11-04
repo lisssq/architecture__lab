@@ -1,6 +1,5 @@
 package org.example;
 
-
 public enum Tasks
 {
     ld,

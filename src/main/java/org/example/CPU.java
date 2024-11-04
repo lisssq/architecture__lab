@@ -13,33 +13,33 @@ public class CPU implements ICpu
     Memory mem = new Memory();      //экземпляр памяти
 
     // методы для получения и установки значений регистров
-    int GetterR1() {return r1;}
-    void SetterR1(int r1) {this.r1=r1;}
+    int GetR1() {return r1;}
+    void SetR1(int r1) {this.r1=r1;}
 
-    int GetterR2() {return r2;}
-    void SetterR2(int r2) {this.r2=r2;}
+    int GetR2() {return r2;}
+    void SetR2(int r2) {this.r2=r2;}
 
-    int GetterR3() {return r3;}
-    void SetterR3(int r3) {this.r3=r3;}
+    int GetR3() {return r3;}
+    void SetR3(int r3) {this.r3=r3;}
 
-    int GetterR4() {return r4;}
-    void SetterR4(int r4) {this.r4=r4;}
+    int GetR4() {return r4;}
+    void SetR4(int r4) {this.r4=r4;}
 
 
     @Override
     public void doCommand(Commands c)
     {
         Map<String, Consumer<Integer>> registerSetMap = new HashMap<>();
-        registerSetMap.put("r1", this::SetterR1);       // хранит функции для записи значений в регистры
-        registerSetMap.put("r2", this::SetterR2);
-        registerSetMap.put("r3", this::SetterR3);
-        registerSetMap.put("r4", this::SetterR4);
+        registerSetMap.put("r1", this::SetR1);       // хранит функции для записи значений в регистры
+        registerSetMap.put("r2", this::SetR2);
+        registerSetMap.put("r3", this::SetR3);
+        registerSetMap.put("r4", this::SetR4);
 
         Map<String, Supplier<Integer>> registerGetMap = new HashMap<>();
-        registerGetMap.put("r1", this::GetterR1);       // хранит функции для получения значений из регистров
-        registerGetMap.put("r2", this::GetterR2);
-        registerGetMap.put("r3", this::GetterR3);
-        registerGetMap.put("r4", this::GetterR4);
+        registerGetMap.put("r1", this::GetR1);       // хранит функции для получения значений из регистров
+        registerGetMap.put("r2", this::GetR2);
+        registerGetMap.put("r3", this::GetR3);
+        registerGetMap.put("r4", this::GetR4);
 
 
         switch (c.getTasks())
@@ -59,28 +59,27 @@ public class CPU implements ICpu
                 break;
 
             case print:
-                System.out.println("Reg1: " + GetterR1());
-                System.out.println("Reg2: " + GetterR2());
-                System.out.println("Reg3: " + GetterR3());
-                System.out.println("Reg4: " + GetterR4());
+                System.out.println("Reg1: " + GetR1());
+                System.out.println("Reg2: " + GetR2());
+                System.out.println("Reg3: " + GetR3());
+                System.out.println("Reg4: " + GetR4());
                 break;
 
             case add:
-                SetterR4(GetterR1() + GetterR2());
+                SetR4(GetR1() + GetR2());
                 break;
 
             case sub:
-                SetterR4(GetterR1() - GetterR2());
+                SetR4(GetR1() - GetR2());
                 break;
 
             case mul:
-                SetterR4(GetterR1() * GetterR2());
+                SetR4(GetR1() * GetR2());
                 break;
 
             case div:
-                SetterR4(GetterR1() / GetterR2());
+                SetR4(GetR1() / GetR2());
                 break;
-
 
             case st:            // запись значения из регистра в память
                 Supplier<Integer> registerGetter = registerGetMap.get(c.register);  //если c.register равно "r1",
