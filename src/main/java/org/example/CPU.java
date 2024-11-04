@@ -81,6 +81,7 @@ public class CPU implements ICpu
                 SetterR4(GetterR1() / GetterR2());
                 break;
 
+
             case st:            // запись значения из регистра в память
                 Supplier<Integer> registerGetter = registerGetMap.get(c.register);  //если c.register равно "r1",
                 // то registerGetter будет указывать на метод GetterR1

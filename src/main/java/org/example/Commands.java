@@ -21,6 +21,7 @@ public class Commands
         this.figure = figure;
     }
 
+
     public Commands(Tasks t, String register, int index_memory)
     {
         this.t = t;
