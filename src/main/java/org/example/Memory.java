@@ -1,6 +1,5 @@
 package org.example;
 
-
 public class Memory
 {
     int memory[] = new int[1024];       //массив размером 1024, представляющий память.

@@ -1,5 +1,4 @@
 package org.example;
-
 import java.util.*;
 
 public class Collect implements Iterable<Commands>
@@ -10,7 +9,6 @@ public class Collect implements Iterable<Commands>
     {
         commands.add(command);
     }
-
 
     public Tasks mostPopularInstruction()
     {
@@ -36,17 +34,14 @@ public class Collect implements Iterable<Commands>
                 mostPopularTask = entry.getKey();               // назначаем команду как наиболее часто встречающуюся
             }
         }
-
         return mostPopularTask;
     }
-
 
 
     public String getMemoryAddressRange()    // получение диапазона используемых адресов памяти
     {
         int minAddress = Integer.MAX_VALUE;
         int maxAddress = Integer.MIN_VALUE;
-
         boolean isUsed = false;            // флаг, чтобы отслеживать, использовались ли адреса
 
         for (Commands command : commands)
@@ -66,7 +61,6 @@ public class Collect implements Iterable<Commands>
     }
 
 
-
     public List<String> getInstructionsByCount()
     {
         Map<String, Integer> countMap = new HashMap<>();           // карта, хранящая название команды и кол-во ее использования
@@ -77,10 +71,9 @@ public class Collect implements Iterable<Commands>
 
         List<Map.Entry<String, Integer>> commandsList = new ArrayList<>(countMap.entrySet());  // преобразуем множество пар в список
 
-
         Comparator<Map.Entry<String, Integer>> comparator = new Comparator<Map.Entry<String, Integer>>()      // компаратор для сортировки по убыванию
         {
-            //@Override
+            @Override
             public int compare(Map.Entry<String, Integer> entry1, Map.Entry<String, Integer> entry2)
             {
                 return entry2.getValue().compareTo(entry1.getValue());  // получаем значение кол-ва 1ой и 2ой команды и сравниваем
@@ -95,7 +88,6 @@ public class Collect implements Iterable<Commands>
         }
         return sortedInstructions;
     }
-
 
     @Override
     public Iterator<Commands> iterator()

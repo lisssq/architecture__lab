@@ -6,6 +6,5 @@ package org.example;
 // любой класс, который implements (реализует) этот интерфейс, будет обязан реализовать метод execute(Commands c)
 public interface ICpu
 {   //выполняет определенную переданную ему команду
-
     void doCommand(Commands c);
 }
