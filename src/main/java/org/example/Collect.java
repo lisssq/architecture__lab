@@ -71,15 +71,20 @@ public class Collect implements Iterable<Commands>
 
         List<Map.Entry<String, Integer>> commandsList = new ArrayList<>(countMap.entrySet());  // преобразуем множество пар в список
 
-        Comparator<Map.Entry<String, Integer>> comparator = new Comparator<Map.Entry<String, Integer>>()      // компаратор для сортировки по убыванию
-        {
-            @Override
-            public int compare(Map.Entry<String, Integer> entry1, Map.Entry<String, Integer> entry2)
-            {
-                return entry2.getValue().compareTo(entry1.getValue());  // получаем значение кол-ва 1ой и 2ой команды и сравниваем
-            }
-        };
+//        Comparator<Map.Entry<String, Integer>> comparator = new Comparator<Map.Entry<String, Integer>>()      // компаратор для сортировки по убыванию
+//        {
+//            @Override
+//            public int compare(Map.Entry<String, Integer> entry1, Map.Entry<String, Integer> entry2)
+//            {
+//                return entry2.getValue().compareTo(entry1.getValue());  // получаем значение кол-ва 1ой и 2ой команды и сравниваем
+//            }
+//        };
+
+        Comparator<Map.Entry<String, Integer>> comparator = (entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue());
         commandsList.sort(comparator);
+
+
+
 
         List<String> sortedInstructions = new ArrayList<>();       // список для отсортированного по кол-ву появления команд
         for (Map.Entry<String, Integer> entry : commandsList)
